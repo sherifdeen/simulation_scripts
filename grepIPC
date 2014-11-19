@@ -1,0 +1,38 @@
+#!/bin/bash
+clear
+
+echo "mix1 "
+grep "THROUGHPUT IPC:," mix1.out > grepIPC.csv
+
+echo "mix2 "
+grep "THROUGHPUT IPC:," mix2.out >> grepIPC.csv 
+
+echo "mix3 "
+grep "THROUGHPUT IPC:," mix3.out >> grepIPC.csv 
+
+echo "mix4 "
+grep "THROUGHPUT IPC:," mix4.out >> grepIPC.csv 
+
+echo "mix5 "
+grep "THROUGHPUT IPC:," mix5.out >> grepIPC.csv 
+
+echo "mix6 "
+grep "THROUGHPUT IPC:," mix6.out >> grepIPC.csv 
+
+echo "mix7 "
+grep "THROUGHPUT IPC:," mix7.out >> grepIPC.csv 
+
+echo "mix8 "
+grep "THROUGHPUT IPC:," mix8.out >> grepIPC.csv 
+
+echo "mix9 "
+grep "THROUGHPUT IPC:," mix9.out >> grepIPC.csv 
+
+echo "mix10 "
+grep "THROUGHPUT IPC:," mix10.out >> grepIPC.csv 
+
+echo "mix11 "
+grep "THROUGHPUT IPC:," mix11.out >> grepIPC.csv 
+
+echo "mix12 "
+grep "THROUGHPUT IPC:," mix12.out >> grepIPC.csv 

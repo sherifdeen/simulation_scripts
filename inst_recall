@@ -1,0 +1,61 @@
+if(blocked == 1)
+{
+    if(committed >= 1)
+    {
+	blocked = 0;
+    }
+    else
+	block_cc++;
+
+    if(block_cc == CBR)
+    {
+	blocked = 0;
+    }
+    else
+	blocked = 1;
+}
+else
+    blocked = 0;
+
+
+//After dispatch (dispatch while loop)
+
+for(unsigned int j=0;j<contexts.size();j++)
+{
+
+    if(contexts[j].ready_insn >= 1)
+    {
+    	contexts[j].stall_cc = 0;
+    }
+    else
+    	if(contexts[j].committed >= 1)
+    	{
+           contexts[j].stall_cc = 0; 
+    	}
+    	else
+    	    contexts[j].stall_cc++;
+    if(contexts[j].stall_cc == CSB)
+    {
+    	contexts[j].blocked = 1;
+    }
+    else
+	contexts[j].blocked = 0;	
+
+
+ //if blocked = 1, then free the IQ entry
+
+    if(contexts[j].blocked == 1)
+    {
+    	iq.free_iq_entry(contexts[j].ROB[ROB_index].iq_entry_num);
+    	contexts[j].ROB[ROB_index].in_IQ = FALSE;
+    	contexts[j].icount--;
+    	contexts[j].iq_count--;			//my in_iq count down
+    	assert(contexts[j].icount <= (contexts[j].IFQ.size() + contexts[j].ROB.size()));
+    	/************ DCRA ***************/
+    	contexts[j].DCRA_int_iq--;
+    	assert(contexts[j].DCRA_int_iq >= 0);
+    	/*********************************/
+
+	contexts[j].block_cc 0;
+    }
+}
